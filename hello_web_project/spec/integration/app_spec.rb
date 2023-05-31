@@ -5,12 +5,10 @@ describe Application do
   include Rack::Test::Methods
   let(:app) { Application.new }
 
-  context 'GET /' do
-    it 'returns 200 OK' do
-      response = get ("/names?names=Julia, Mary, Karim")
-
-      expect(response.status).to be(200)
-      expect(response.body).to eq("Julia, Mary, Karim")
+  context 'GET /hello' do
+    it 'returns htmal index' do
+      response = get("/hello")
+      expect(response.body).to include('<h1>Hello!</h1>')
     end
   end
   context "POST /" do
